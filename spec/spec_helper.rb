@@ -1,4 +1,5 @@
 require 'capybara/rspec'
+require './app/models/link.rb'
 # require './app.rb'
 
 RSpec.configure do |config|
