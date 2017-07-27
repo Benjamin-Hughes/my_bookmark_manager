@@ -4,7 +4,7 @@
   <% @links.each do |link| %>
   <li>
     Title:  <%= link.title %>
-    URL:    <%= link(url: link.url, text: 'Makers Academy') %>
+    URL:    <a href="<%= link.url %>">Makers Academy</a>
   </li>
 <% end %>
 </ul>
