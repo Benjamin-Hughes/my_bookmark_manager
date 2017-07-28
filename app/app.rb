@@ -16,12 +16,11 @@ class BookmarkManager < Sinatra::Base
   post '/links' do
     # Create a new row in the database and use the input from the forms
     link = Link.new(url: params[:url], title: params[:title])
-    tag = Tag.first_or_create(name: params[:tags]) #Can this be done inside the Link.new call?
-    link.tags << tag # creates the relationship betwen link and tag
+    params[:tags].split.each do |tag| # Splits each tag and creates tag objects for them
+      link.tags << Tag.first_or_create(name: tag) # Creates the relationship between tags and links
+    end
     link.save # saves the relationship created above to the database
     redirect to('/links')
-  #   Link.create(url: params[:url], title: params[:title])
-  #   redirect '/links'
   end
 
   get '/tags/:name' do
